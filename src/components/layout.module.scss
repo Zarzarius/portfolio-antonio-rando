@@ -1,0 +1,307 @@
+/**
+ * Shared layout styles — matches Pencil design (pencil-new.pen).
+ * Used by home and all subpages.
+ */
+
+.wrapper {
+  min-height: 100vh;
+  background-color: var(--color-bg-page);
+}
+
+/* ─── Header ───────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-header-y) var(--padding-section-x);
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: var(--color-bg-page);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-badge);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-nav);
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.navLinkActive {
+  color: var(--color-text-primary);
+}
+
+/* ─── Main ─────────────────────────────────────────────────────────────── */
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ─── Hero (home only) ──────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 80px;
+  padding: var(--padding-hero-y) var(--padding-section-x);
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-page) 0%,
+    var(--color-bg-warm) 40%,
+    var(--color-bg-page) 100%
+  );
+}
+
+.heroInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-hero);
+  max-width: var(--max-width-hero-text);
+}
+
+.heroBadge {
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-badge);
+  color: var(--color-accent);
+}
+
+.heroHeadline {
+  font-family: var(--font-display);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.1;
+  letter-spacing: var(--letter-spacing-hero);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.heroSubline {
+  font-family: var(--font-body);
+  font-size: var(--font-size-subline);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: var(--max-width-hero-text);
+}
+
+.heroDivider {
+  width: var(--accent-bar-width);
+  height: var(--accent-bar-height);
+  background-color: var(--color-accent);
+}
+
+.heroImageWrap {
+  flex-shrink: 0;
+}
+
+.heroImage {
+  width: 480px;
+  max-width: 100%;
+  aspect-ratio: 480 / 360;
+  background-color: var(--color-bg-warm);
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ─── Section shared ───────────────────────────────────────────────────── */
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-section);
+  padding: var(--padding-section-y) var(--padding-section-x);
+  background-color: var(--color-bg-card);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.sectionBody {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: var(--max-width-body);
+}
+
+.aboutBody {
+  max-width: var(--max-width-body);
+}
+
+/* ─── Writing section ───────────────────────────────────────────────────── */
+.writing {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: var(--padding-section-y) var(--padding-section-x);
+  background-color: var(--color-bg-page);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.writingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-grid);
+}
+
+@media (max-width: 900px) {
+  .writingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--padding-card);
+  background-color: var(--color-bg-card);
+  max-width: 100%;
+}
+
+.cardTitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: var(--max-width-card-text);
+}
+
+.teachingBody {
+  max-width: var(--max-width-narrow);
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: var(--padding-footer-y) var(--padding-section-x);
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.footerName {
+  font-family: var(--font-display);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.footerTagline {
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+}
+
+.footerContact {
+  display: flex;
+  gap: 24px;
+}
+
+.footerLink {
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ─── Page title (subpages: single h1) ─────────────────────────────────── */
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .hero,
+  .sectionCard,
+  .writing,
+  .footer {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .hero {
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+
+  .heroInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .heroImageWrap {
+    width: 100%;
+  }
+
+  .heroImage {
+    width: 100%;
+  }
+}

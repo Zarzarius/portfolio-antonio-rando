@@ -1,0 +1,74 @@
+/**
+ * Design tokens — Antonio Rando Portfolio
+ * Extracted from Pencil design (pencil-new.pen)
+ * Use these variables across the app for consistent styling.
+ */
+
+:root {
+  /* ─── Colors ───────────────────────────────────────────────────────────── */
+  --color-bg-page: #fafaf7;
+  --color-bg-warm: #f0ebe3;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #0f0f0f;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-accent: #c41e3a;
+  --color-footer-bg: #0f0f0f;
+  --color-footer-text: #fafaf7;
+
+  /* ─── Typography ───────────────────────────────────────────────────────── */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --font-size-hero: 64px;
+  --font-size-title: 28px;
+  --font-size-subline: 24px;
+  --font-size-body: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-caption: 13px;
+  --font-size-label: 12px;
+  --font-size-logo: 24px;
+
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --line-height-body: 1.5;
+  --letter-spacing-hero: -2px;
+  --letter-spacing-badge: 1px;
+
+  /* ─── Spacing ──────────────────────────────────────────────────────────── */
+  --spacing-xs: 12px;
+  --spacing-sm: 16px;
+  --spacing-md: 20px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+  --spacing-5xl: 100px;
+
+  /* Section / layout padding */
+  --padding-section-x: 120px;
+  --padding-section-y: 64px;
+  --padding-header-y: 24px;
+  --padding-header-x: 56px;
+  --padding-hero-y: 100px;
+  --padding-footer-y: 48px;
+  --padding-card: 24px;
+
+  /* Gaps */
+  --gap-hero: 28px;
+  --gap-section: 20px;
+  --gap-grid: 24px;
+  --gap-nav: 32px;
+
+  /* ─── Accent / UI ──────────────────────────────────────────────────────── */
+  --accent-bar-width: 64px;
+  --accent-bar-height: 3px;
+
+  /* ─── Max widths (content) ─────────────────────────────────────────────── */
+  --max-width-body: 720px;
+  --max-width-narrow: 640px;
+  --max-width-hero-text: 560px;
+  --max-width-card-text: 280px;
+}

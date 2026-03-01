@@ -1,64 +1,105 @@
-import Image from "next/image";
+import clsx from "clsx";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import styles from "@/components/layout.module.scss";
+
+const {
+  wrapper,
+  main,
+  hero,
+  heroInner,
+  heroContent,
+  heroBadge,
+  heroHeadline,
+  heroSubline,
+  heroDivider,
+  heroImageWrap,
+  heroImage,
+  sectionCard,
+  sectionTitle,
+  sectionBody,
+  aboutBody,
+  writing,
+  writingGrid,
+  card,
+  cardTitle,
+  cardDesc,
+  teachingBody,
+} = styles;
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className={clsx(wrapper)}>
+      <SiteHeader />
+      <main className={clsx(main)}>
+        <section className={clsx(hero)} aria-labelledby="hero-headline">
+          <div className={clsx(heroInner)}>
+            <div className={clsx(heroContent)}>
+              <span className={clsx(heroBadge)} id="hero-badge">
+                Writer & Teacher
+              </span>
+              <h1 className={clsx(heroHeadline)} id="hero-headline">
+                Antonio Rando
+              </h1>
+              <p className={clsx(heroSubline)}>
+                Words that teach, stories that stay. Author and educator.
+              </p>
+              <div className={clsx(heroDivider)} aria-hidden />
+            </div>
+            <div className={clsx(heroImageWrap)}>
+              <div className={clsx(heroImage)} role="img" aria-label="Antonio Rando" />
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className={clsx(sectionCard)} aria-labelledby="about-title">
+          <h2 className={clsx(sectionTitle)} id="about-title">
+            About
+          </h2>
+          <p className={clsx(aboutBody, sectionBody)}>
+            Antonio Rando is a writer and teacher whose work sits at the crossroads of
+            literature and education. Through essays, fiction, and teaching, he explores how
+            language shapes understanding and how stories connect us.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        </section>
+
+        <section id="writing" className={clsx(writing)} aria-labelledby="writing-title">
+          <h2 className={clsx(sectionTitle)} id="writing-title">
+            Writing
+          </h2>
+          <div className={clsx(writingGrid)}>
+            <article className={clsx(card)}>
+              <h3 className={clsx(cardTitle)}>Essays & Articles</h3>
+              <p className={clsx(cardDesc)}>
+                Long-form pieces on culture, education, and language.
+              </p>
+            </article>
+            <article className={clsx(card)}>
+              <h3 className={clsx(cardTitle)}>Fiction</h3>
+              <p className={clsx(cardDesc)}>
+                Stories and narrative work.
+              </p>
+            </article>
+            <article className={clsx(card)}>
+              <h3 className={clsx(cardTitle)}>Publications</h3>
+              <p className={clsx(cardDesc)}>
+                Selected published work and collaborations.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="teaching" className={clsx(sectionCard)} aria-labelledby="teaching-title">
+          <h2 className={clsx(sectionTitle)} id="teaching-title">
+            Teaching
+          </h2>
+          <p className={clsx(teachingBody, sectionBody)}>
+            Antonio brings the same care for language and narrative into the classroom.
+            Workshops, courses, and one-to-one mentoring for writers and educators.
+          </p>
+        </section>
+
+        <SiteFooter />
       </main>
     </div>
   );

@@ -29,8 +29,8 @@ export default function ContactPage() {
             </a>
           </p>
         </section>
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -42,8 +42,8 @@ export default function WritingPage() {
             </article>
           </div>
         </section>
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </div>
   );
 }

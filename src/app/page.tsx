@@ -1,7 +1,8 @@
-import clsx from "clsx";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
-import styles from "@/components/layout.module.scss";
+import clsx from 'clsx';
+import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/SiteFooter';
+import styles from '@/components/layout.module.scss';
+import Image from 'next/image';
 
 const {
   wrapper,
@@ -15,6 +16,7 @@ const {
   heroDivider,
   heroImageWrap,
   heroImage,
+  heroImageImg,
   sectionCard,
   sectionTitle,
   sectionBody,
@@ -47,23 +49,45 @@ export default function Home() {
               <div className={clsx(heroDivider)} aria-hidden />
             </div>
             <div className={clsx(heroImageWrap)}>
-              <div className={clsx(heroImage)} role="img" aria-label="Antonio Rando" />
+              <div
+                className={clsx(heroImage)}
+                role="img"
+                aria-label="Antonio Rando"
+              >
+                <Image
+                  src="/images/antonio.png"
+                  alt="Antonio Rando"
+                  width={500}
+                  height={500}
+                  className={heroImageImg}
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className={clsx(sectionCard)} aria-labelledby="about-title">
+        <section
+          id="about"
+          className={clsx(sectionCard)}
+          aria-labelledby="about-title"
+        >
           <h2 className={clsx(sectionTitle)} id="about-title">
             About
           </h2>
           <p className={clsx(aboutBody, sectionBody)}>
-            Antonio Rando is a writer and teacher whose work sits at the crossroads of
-            literature and education. Through essays, fiction, and teaching, he explores how
-            language shapes understanding and how stories connect us.
+            I&apos;m a writer and teacher, with a focus on Balkan history. I
+            teach Spanish in Germany and collaborate with different digital blogs
+            for opinion pieces and networking. Through essays, fiction, and
+            teaching, I explore how language shapes understanding and how stories
+            connect people.
           </p>
         </section>
 
-        <section id="writing" className={clsx(writing)} aria-labelledby="writing-title">
+        <section
+          id="writing"
+          className={clsx(writing)}
+          aria-labelledby="writing-title"
+        >
           <h2 className={clsx(sectionTitle)} id="writing-title">
             Writing
           </h2>
@@ -76,9 +100,7 @@ export default function Home() {
             </article>
             <article className={clsx(card)}>
               <h3 className={clsx(cardTitle)}>Fiction</h3>
-              <p className={clsx(cardDesc)}>
-                Stories and narrative work.
-              </p>
+              <p className={clsx(cardDesc)}>Stories and narrative work.</p>
             </article>
             <article className={clsx(card)}>
               <h3 className={clsx(cardTitle)}>Publications</h3>
@@ -89,18 +111,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="teaching" className={clsx(sectionCard)} aria-labelledby="teaching-title">
+        <section
+          id="teaching"
+          className={clsx(sectionCard)}
+          aria-labelledby="teaching-title"
+        >
           <h2 className={clsx(sectionTitle)} id="teaching-title">
             Teaching
           </h2>
           <p className={clsx(teachingBody, sectionBody)}>
-            Antonio brings the same care for language and narrative into the classroom.
-            Workshops, courses, and one-to-one mentoring for writers and educators.
+            I teach Spanish in Germany and bring the same care for language and
+            narrative into the classroom. Workshops, courses, and one-to-one
+            mentoring for writers and educators.
           </p>
         </section>
-
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -28,8 +28,8 @@ export default function AboutPage() {
             connect us.
           </p>
         </section>
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -25,8 +25,8 @@ export default function TeachingPage() {
             Workshops, courses, and one-to-one mentoring for writers and educators.
           </p>
         </section>
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </div>
   );
 }

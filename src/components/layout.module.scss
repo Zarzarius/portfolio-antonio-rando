@@ -4,6 +4,8 @@
  */
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-bg-page);
 }
@@ -13,10 +15,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: var(--padding-header-y) var(--padding-section-x);
   max-width: 1440px;
   margin: 0 auto;
   background-color: var(--color-bg-page);
+  flex-shrink: 0;
 }
 
 .logo {
@@ -52,8 +56,10 @@
 
 /* ─── Main ─────────────────────────────────────────────────────────────── */
 .main {
+  flex: 1;
   max-width: 1440px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* ─── Hero (home only) ──────────────────────────────────────────────────── */
@@ -124,13 +130,22 @@
 }
 
 .heroImage {
+  position: relative;
   width: 480px;
   max-width: 100%;
   aspect-ratio: 480 / 360;
   background-color: var(--color-bg-warm);
   border-radius: 4px;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+}
+
+.heroImageImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ─── Section shared ───────────────────────────────────────────────────── */
@@ -224,11 +239,11 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  width: 100%;
   padding: var(--padding-footer-y) var(--padding-section-x);
   background-color: var(--color-footer-bg);
   color: var(--color-footer-text);
-  max-width: 1440px;
-  margin: 0 auto;
+  margin-top: auto;
 }
 
 .footerName {

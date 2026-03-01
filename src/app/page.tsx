@@ -3,6 +3,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import styles from '@/components/layout.module.scss';
 import Image from 'next/image';
+import { getPublications } from '@/sanity/queries';
 
 const {
   wrapper,
@@ -29,7 +30,9 @@ const {
   teachingBody,
 } = styles;
 
-export default function Home() {
+export default async function Home() {
+  const publications = await getPublications();
+
   return (
     <div className={clsx(wrapper)}>
       <SiteHeader />
@@ -107,6 +110,13 @@ export default function Home() {
               <p className={clsx(cardDesc)}>
                 Selected published work and collaborations.
               </p>
+              {publications.length > 0 && (
+                <ul style={{ marginTop: '1rem', paddingLeft: '1.25rem' }}>
+                  {publications.map((pub) => (
+                    <li key={pub._id}>{pub.title ?? 'Untitled'}</li>
+                  ))}
+                </ul>
+              )}
             </article>
           </div>
         </section>

@@ -6,6 +6,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 100vh;
   background-color: var(--color-bg-page);
 }
@@ -57,8 +58,7 @@
 /* ─── Main ─────────────────────────────────────────────────────────────── */
 .main {
   flex: 1;
-  max-width: 1440px;
-  margin: 0 auto;
+  margin: 0;
   width: 100%;
 }
 
@@ -126,13 +126,15 @@
 }
 
 .heroImageWrap {
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .heroImage {
   position: relative;
   width: 480px;
   max-width: 100%;
+  min-width: 0;
   aspect-ratio: 480 / 360;
   background-color: var(--color-bg-warm);
   border-radius: 4px;
@@ -238,12 +240,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
   width: 100%;
-  padding: var(--padding-footer-y) var(--padding-section-x);
+  padding: var(--padding-footer-y) 0;
   background-color: var(--color-footer-bg);
   color: var(--color-footer-text);
   margin-top: auto;
+}
+
+.footerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: var(--padding-section-x);
+  padding-right: var(--padding-section-x);
 }
 
 .footerName {
@@ -289,15 +302,31 @@
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
+    align-items: center;
     gap: var(--spacing-lg);
     padding-left: var(--spacing-lg);
     padding-right: var(--spacing-lg);
   }
 
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+
   .hero,
   .sectionCard,
-  .writing,
+  .writing {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
   .footer {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .footerInner {
     padding-left: var(--spacing-lg);
     padding-right: var(--spacing-lg);
   }

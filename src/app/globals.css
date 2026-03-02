@@ -1,6 +1,7 @@
 :root {
   --background: var(--color-bg-page);
   --foreground: var(--color-text-primary);
+  --transition-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 *,
@@ -28,4 +29,61 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Page transition keyframes ────────────────────────────────────────── */
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accentWipe {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ─── View Transitions API overrides ───────────────────────────────────── */
+
+::view-transition-old(site-header),
+::view-transition-new(site-header),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation: none;
+}
+
+::view-transition-old(root) {
+  animation: 300ms ease-out both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 300ms ease-in 100ms both fade-in;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

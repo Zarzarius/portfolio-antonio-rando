@@ -4,25 +4,50 @@ import {
   UserIcon,
   BookIcon,
   DocumentTextIcon,
+  PlayIcon,
+  SearchIcon,
 } from '@sanity/icons';
 import { defineField, defineType, type SchemaTypeDefinition } from 'sanity';
 
-const document = (name: string, title: string) =>
-  defineType({
-    name,
-    title,
-    type: 'document',
-    fields: [
-      defineField({ name: 'title', title: 'Title', type: 'string' }),
-      defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } }),
-    ],
-  }) as SchemaTypeDefinition;
+const localizedString = defineType({
+  name: 'localizedString',
+  title: 'Localized string',
+  type: 'object',
+  fields: [
+    defineField({ name: 'en', title: 'English', type: 'string' }),
+    defineField({ name: 'de', title: 'German', type: 'string' }),
+    defineField({ name: 'es', title: 'Spanish', type: 'string' }),
+  ],
+});
+
+const localizedText = defineType({
+  name: 'localizedText',
+  title: 'Localized text',
+  type: 'object',
+  fields: [
+    defineField({ name: 'en', title: 'English', type: 'text', rows: 3 }),
+    defineField({ name: 'de', title: 'German', type: 'text', rows: 3 }),
+    defineField({ name: 'es', title: 'Spanish', type: 'text', rows: 3 }),
+  ],
+});
 
 /** Shared meta fields for page documents (SEO / heading) */
 const pageMetaFields = [
-  defineField({ name: 'title', title: 'Title', type: 'string', description: 'Page title (e.g. for <title> and headings)' }),
-  defineField({ name: 'description', title: 'Description', type: 'text', description: 'Meta description for SEO' }),
+  defineField({
+    name: 'title',
+    title: 'Title',
+    type: 'localizedString',
+    description: 'Page title (e.g. for <title> and headings)',
+  }),
+  defineField({
+    name: 'description',
+    title: 'Description',
+    type: 'localizedText',
+    description: 'Meta description for SEO',
+  }),
 ];
+
+// ── Page singletons ──────────────────────────────────────────────────────
 
 const homePage = defineType({
   name: 'homePage',
@@ -31,35 +56,47 @@ const homePage = defineType({
   icon: HomeIcon,
   fields: [
     ...pageMetaFields,
-    defineField({ name: 'heroBadge', title: 'Hero badge', type: 'string' }),
-    defineField({ name: 'heroHeadline', title: 'Hero headline', type: 'string' }),
-    defineField({ name: 'heroSubline', title: 'Hero subline', type: 'text' }),
+    defineField({ name: 'heroBadge', title: 'Hero badge', type: 'localizedString' }),
+    defineField({ name: 'heroHeadline', title: 'Hero headline', type: 'localizedString' }),
+    defineField({ name: 'heroSubline', title: 'Hero subline', type: 'localizedText' }),
     defineField({ name: 'heroImage', title: 'Hero image', type: 'image', options: { hotspot: true } }),
-    defineField({ name: 'aboutExcerpt', title: 'About excerpt', type: 'text' }),
-    defineField({ name: 'writingIntro', title: 'Writing intro', type: 'text' }),
-    defineField({ name: 'teachingExcerpt', title: 'Teaching excerpt', type: 'text' }),
+    defineField({ name: 'aboutExcerpt', title: 'About excerpt', type: 'localizedText' }),
+    defineField({ name: 'journalismExcerpt', title: 'Journalism & Analysis excerpt', type: 'localizedText' }),
+    defineField({ name: 'researchExcerpt', title: 'Academic Research excerpt', type: 'localizedText' }),
+    defineField({ name: 'multimediaExcerpt', title: 'Multimedia & Podcast excerpt', type: 'localizedText' }),
   ],
 });
 
-const writingPage = defineType({
-  name: 'writingPage',
-  title: 'Writing Page',
-  type: 'document',
-  icon: BookIcon,
-  fields: [
-    ...pageMetaFields,
-    defineField({ name: 'body', title: 'Body', type: 'text' }),
-  ],
-});
-
-const teachingPage = defineType({
-  name: 'teachingPage',
-  title: 'Teaching Page',
+const journalismPage = defineType({
+  name: 'journalismPage',
+  title: 'Journalism & Analysis Page',
   type: 'document',
   icon: DocumentTextIcon,
   fields: [
     ...pageMetaFields,
-    defineField({ name: 'body', title: 'Body', type: 'text' }),
+    defineField({ name: 'body', title: 'Body', type: 'localizedText' }),
+  ],
+});
+
+const researchPage = defineType({
+  name: 'researchPage',
+  title: 'Academic Research Page',
+  type: 'document',
+  icon: SearchIcon,
+  fields: [
+    ...pageMetaFields,
+    defineField({ name: 'body', title: 'Body', type: 'localizedText' }),
+  ],
+});
+
+const multimediaPage = defineType({
+  name: 'multimediaPage',
+  title: 'Multimedia & Podcast Page',
+  type: 'document',
+  icon: PlayIcon,
+  fields: [
+    ...pageMetaFields,
+    defineField({ name: 'body', title: 'Body', type: 'localizedText' }),
   ],
 });
 
@@ -70,7 +107,7 @@ const aboutPage = defineType({
   icon: UserIcon,
   fields: [
     ...pageMetaFields,
-    defineField({ name: 'body', title: 'Body', type: 'text' }),
+    defineField({ name: 'body', title: 'Body', type: 'localizedText' }),
   ],
 });
 
@@ -81,34 +118,70 @@ const contactPage = defineType({
   icon: EnvelopeIcon,
   fields: [
     ...pageMetaFields,
-    defineField({ name: 'body', title: 'Body', type: 'text' }),
+    defineField({ name: 'body', title: 'Body', type: 'localizedText' }),
     defineField({ name: 'email', title: 'Contact email', type: 'string' }),
   ],
 });
 
-const project = document('project', 'Project');
-const article = document('article', 'Article');
-const essay = document('essay', 'Essay');
-const fiction = document('fiction', 'Fiction');
-const publication = document('publication', 'Publication');
-const workshop = document('workshop', 'Workshop');
-const course = document('course', 'Course');
-const mentoring = document('mentoring', 'Mentoring');
+// ── Content document types ───────────────────────────────────────────────
+
+const journalismArticle = defineType({
+  name: 'journalismArticle',
+  title: 'Journalism Article',
+  type: 'document',
+  icon: DocumentTextIcon,
+  fields: [
+    defineField({ name: 'title', title: 'Title', type: 'string' }),
+    defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } }),
+    defineField({ name: 'excerpt', title: 'Excerpt', type: 'text' }),
+    defineField({ name: 'publishedAt', title: 'Published at', type: 'datetime' }),
+    defineField({ name: 'category', title: 'Category', type: 'string', options: { list: ['opinion', 'analysis', 'reportage', 'interview'] } }),
+    defineField({ name: 'externalUrl', title: 'External URL', type: 'url' }),
+  ],
+});
+
+const researchPaper = defineType({
+  name: 'researchPaper',
+  title: 'Research Paper',
+  type: 'document',
+  icon: BookIcon,
+  fields: [
+    defineField({ name: 'title', title: 'Title', type: 'string' }),
+    defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } }),
+    defineField({ name: 'abstract', title: 'Abstract', type: 'text' }),
+    defineField({ name: 'publishedAt', title: 'Published at', type: 'datetime' }),
+    defineField({ name: 'journal', title: 'Journal / Publisher', type: 'string' }),
+    defineField({ name: 'doi', title: 'DOI', type: 'string' }),
+  ],
+});
+
+const podcastEpisode = defineType({
+  name: 'podcastEpisode',
+  title: 'Podcast Episode',
+  type: 'document',
+  icon: PlayIcon,
+  fields: [
+    defineField({ name: 'title', title: 'Title', type: 'string' }),
+    defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } }),
+    defineField({ name: 'description', title: 'Description', type: 'text' }),
+    defineField({ name: 'publishedAt', title: 'Published at', type: 'datetime' }),
+    defineField({ name: 'audioUrl', title: 'Audio URL', type: 'url' }),
+    defineField({ name: 'duration', title: 'Duration (minutes)', type: 'number' }),
+  ],
+});
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    localizedString,
+    localizedText,
     homePage,
-    writingPage,
-    teachingPage,
+    journalismPage,
+    researchPage,
+    multimediaPage,
     aboutPage,
     contactPage,
-    project,
-    article,
-    essay,
-    fiction,
-    publication,
-    workshop,
-    course,
-    mentoring,
+    journalismArticle,
+    researchPaper,
+    podcastEpisode,
   ],
 };

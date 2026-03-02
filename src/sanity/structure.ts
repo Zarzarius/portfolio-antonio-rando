@@ -1,12 +1,13 @@
-import { HomeIcon, BookIcon, DocumentTextIcon, UserIcon, EnvelopeIcon } from '@sanity/icons'
+import { HomeIcon, DocumentTextIcon, SearchIcon, PlayIcon, UserIcon, EnvelopeIcon } from '@sanity/icons'
 import type { StructureResolver } from 'sanity/structure'
 
-const PAGE_SINGLETONS = ['homePage', 'writingPage', 'teachingPage', 'aboutPage', 'contactPage'] as const
+const PAGE_SINGLETONS = ['homePage', 'journalismPage', 'researchPage', 'multimediaPage', 'aboutPage', 'contactPage'] as const
 
 const pageSingletons = [
   { type: 'homePage' as const, title: 'Home', icon: HomeIcon },
-  { type: 'writingPage' as const, title: 'Writing', icon: BookIcon },
-  { type: 'teachingPage' as const, title: 'Teaching', icon: DocumentTextIcon },
+  { type: 'journalismPage' as const, title: 'Journalism & Analysis', icon: DocumentTextIcon },
+  { type: 'researchPage' as const, title: 'Academic Research', icon: SearchIcon },
+  { type: 'multimediaPage' as const, title: 'Multimedia & Podcast', icon: PlayIcon },
   { type: 'aboutPage' as const, title: 'About', icon: UserIcon },
   { type: 'contactPage' as const, title: 'Contact', icon: EnvelopeIcon },
 ]

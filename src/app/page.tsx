@@ -79,10 +79,10 @@ export default async function Home() {
           </h2>
           <p className={clsx(aboutBody, sectionBody)}>
             I&apos;m a writer and teacher, with a focus on Balkan history. I
-            teach Spanish in Germany and collaborate with different digital blogs
-            for opinion pieces and networking. Through essays, fiction, and
-            teaching, I explore how language shapes understanding and how stories
-            connect people.
+            teach Spanish in Germany and collaborate with different digital
+            blogs for opinion pieces and networking. Through essays, fiction,
+            and teaching, I explore how language shapes understanding and how
+            stories connect people.
           </p>
         </section>
 

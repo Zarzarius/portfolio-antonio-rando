@@ -27,9 +27,14 @@ export function middleware(request: NextRequest) {
   }
 
   if (isLocale(firstSegment)) {
-    const response = NextResponse.next();
-    response.cookies.set('site-locale', firstSegment);
-    return response;
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-site-locale', firstSegment);
+
+    return NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
   }
 
   const url = request.nextUrl.clone();

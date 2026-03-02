@@ -18,6 +18,10 @@ const fontBody = Inter({
 export const metadata: Metadata = {
   title: "Antonio Rando — Portfolio",
   description: "Portfolio of Antonio Rando: design and development.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    title: "Antonio Rando ",
+  },
 };
 
 export default function RootLayout({

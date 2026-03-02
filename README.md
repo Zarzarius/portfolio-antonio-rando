@@ -31,13 +31,15 @@ Install dependencies (this project uses [pnpm](https://pnpm.io)):
 pnpm install
 ```
 
+Copy `.env.example` to `.env.local` (if present) and set `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` so the app and build can reach Sanity.
+
 Run the development server:
 
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Sanity Studio is at [http://localhost:3000/studio](http://localhost:3000/studio).
 
 ## Scripts
 
@@ -47,6 +49,20 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `pnpm build` | Build for production     |
 | `pnpm start` | Start production server  |
 | `pnpm lint`  | Run ESLint               |
+
+## Seeding page content (Sanity)
+
+The site has five editable page singletons in Sanity (Home, Writing, Teaching, About, Contact). To create or reset them with default copy:
+
+1. In Sanity Manage, create an API token with **Editor** (or write) access and set `SANITY_API_WRITE_TOKEN` in `.env.local`.
+2. Set `SEED_SECRET` to a long random string (e.g. 16+ chars) in `.env.local`.
+3. With the dev server running, run:
+   ```bash
+   curl -X POST "http://localhost:3000/api/seed-pages?secret=YOUR_SEED_SECRET"
+   ```
+   Or send `x-seed-secret: YOUR_SEED_SECRET` and `POST /api/seed-pages`.
+
+Alternatively, open **Sanity Studio** at `/studio`, go to **Pages** and open each of Home, Writing, Teaching, About, Contact. The first time you open each, the document is created with that fixed ID; you can then edit content there. The site uses fallback copy until content exists.
 
 ## Project Structure
 

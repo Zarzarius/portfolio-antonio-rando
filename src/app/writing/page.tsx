@@ -2,25 +2,38 @@ import clsx from "clsx";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import styles from "@/components/layout.module.scss";
+import { getWritingPage } from "@/sanity/queries";
 
-const { wrapper, main, sectionTitle, writing, writingGrid, card, cardTitle, cardDesc } =
+const { wrapper, main, sectionTitle, sectionBody, writing, writingGrid, card, cardTitle, cardDesc } =
   styles;
 
-export const metadata = {
-  title: "Writing — Antonio Rando",
-  description:
-    "Essays, fiction, and publications by Antonio Rando.",
-};
+const DEFAULT_TITLE = "Writing — Antonio Rando";
+const DEFAULT_DESCRIPTION = "Essays, fiction, and publications by Antonio Rando.";
 
-export default function WritingPage() {
+export async function generateMetadata() {
+  const page = await getWritingPage();
+  return {
+    title: page?.title ? `${page.title} — Antonio Rando` : DEFAULT_TITLE,
+    description: page?.description ?? DEFAULT_DESCRIPTION,
+  };
+}
+
+export default async function WritingPage() {
+  const page = await getWritingPage();
+  const title = page?.title ?? "Writing";
+  const body = page?.body;
+
   return (
     <div className={clsx(wrapper)}>
       <SiteHeader />
       <main className={clsx(main)}>
         <section className={clsx(writing)} aria-labelledby="writing-title">
           <h1 className={clsx(sectionTitle)} id="writing-title">
-            Writing
+            {title}
           </h1>
+          {body ? (
+            <p className={clsx(sectionBody)}>{body}</p>
+          ) : null}
           <div className={clsx(writingGrid)}>
             <article className={clsx(card)}>
               <h2 className={clsx(cardTitle)}>Essays & Articles</h2>

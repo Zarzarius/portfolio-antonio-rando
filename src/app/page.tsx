@@ -1,9 +1,20 @@
 import clsx from 'clsx';
+import Image from 'next/image';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import styles from '@/components/layout.module.scss';
-import Image from 'next/image';
-import { getPublications } from '@/sanity/queries';
+import { urlFor } from '@/sanity/lib/image';
+import { getHomePage, getPublications } from '@/sanity/queries';
+
+const DEFAULT_HERO = {
+  badge: 'Writer & Teacher',
+  headline: 'Antonio Rando',
+  subline: 'Words that teach, stories that stay. Author and educator.',
+};
+const DEFAULT_ABOUT =
+  "I'm a writer and teacher, with a focus on Balkan history. I teach Spanish in Germany and collaborate with different digital blogs for opinion pieces and networking. Through essays, fiction, and teaching, I explore how language shapes understanding and how stories connect people.";
+const DEFAULT_TEACHING =
+  'I teach Spanish in Germany and bring the same care for language and narrative into the classroom. Workshops, courses, and one-to-one mentoring for writers and educators.';
 
 const {
   wrapper,
@@ -31,7 +42,20 @@ const {
 } = styles;
 
 export default async function Home() {
-  const publications = await getPublications();
+  const [home, publications] = await Promise.all([
+    getHomePage(),
+    getPublications(),
+  ]);
+
+  const heroBadgeText = home?.heroBadge ?? DEFAULT_HERO.badge;
+  const heroHeadlineText = home?.heroHeadline ?? DEFAULT_HERO.headline;
+  const heroSublineText = home?.heroSubline ?? DEFAULT_HERO.subline;
+  const aboutExcerpt = home?.aboutExcerpt ?? DEFAULT_ABOUT;
+  const teachingExcerpt = home?.teachingExcerpt ?? DEFAULT_TEACHING;
+
+  const heroImageUrl =
+    home?.heroImage &&
+    urlFor(home.heroImage).width(500).height(500).url();
 
   return (
     <div className={clsx(wrapper)}>
@@ -41,29 +65,37 @@ export default async function Home() {
           <div className={clsx(heroInner)}>
             <div className={clsx(heroContent)}>
               <span className={clsx(heroBadge)} id="hero-badge">
-                Writer & Teacher
+                {heroBadgeText}
               </span>
               <h1 className={clsx(heroHeadline)} id="hero-headline">
-                Antonio Rando
+                {heroHeadlineText}
               </h1>
-              <p className={clsx(heroSubline)}>
-                Words that teach, stories that stay. Author and educator.
-              </p>
+              <p className={clsx(heroSubline)}>{heroSublineText}</p>
               <div className={clsx(heroDivider)} aria-hidden />
             </div>
             <div className={clsx(heroImageWrap)}>
               <div
                 className={clsx(heroImage)}
                 role="img"
-                aria-label="Antonio Rando"
+                aria-label={heroHeadlineText}
               >
-                <Image
-                  src="/images/antonio.png"
-                  alt="Antonio Rando"
-                  width={500}
-                  height={500}
-                  className={heroImageImg}
-                />
+                {heroImageUrl ? (
+                  <Image
+                    src={heroImageUrl}
+                    alt={heroHeadlineText}
+                    width={500}
+                    height={500}
+                    className={heroImageImg}
+                  />
+                ) : (
+                  <Image
+                    src="/images/antonio.png"
+                    alt={heroHeadlineText}
+                    width={500}
+                    height={500}
+                    className={heroImageImg}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -77,13 +109,7 @@ export default async function Home() {
           <h2 className={clsx(sectionTitle)} id="about-title">
             About
           </h2>
-          <p className={clsx(aboutBody, sectionBody)}>
-            I&apos;m a writer and teacher, with a focus on Balkan history. I
-            teach Spanish in Germany and collaborate with different digital
-            blogs for opinion pieces and networking. Through essays, fiction,
-            and teaching, I explore how language shapes understanding and how
-            stories connect people.
-          </p>
+          <p className={clsx(aboutBody, sectionBody)}>{aboutExcerpt}</p>
         </section>
 
         <section
@@ -129,11 +155,7 @@ export default async function Home() {
           <h2 className={clsx(sectionTitle)} id="teaching-title">
             Teaching
           </h2>
-          <p className={clsx(teachingBody, sectionBody)}>
-            I teach Spanish in Germany and bring the same care for language and
-            narrative into the classroom. Workshops, courses, and one-to-one
-            mentoring for writers and educators.
-          </p>
+          <p className={clsx(teachingBody, sectionBody)}>{teachingExcerpt}</p>
         </section>
       </main>
       <SiteFooter />

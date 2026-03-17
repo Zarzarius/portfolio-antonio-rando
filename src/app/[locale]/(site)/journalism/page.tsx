@@ -1,21 +1,12 @@
 import clsx from 'clsx';
+import { ListingCard } from '@/components/ListingCard';
 import styles from '@/components/layout.module.scss';
 import { getDictionary } from '@/i18n/dictionaries';
 import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getJournalismPage, getJournalismArticles } from '@/sanity/queries';
 
-const {
-  main,
-  sectionTitle,
-  sectionBody,
-  contentSection,
-  contentGrid,
-  card,
-  cardTitle,
-  cardDesc,
-  cardMeta,
-} = styles;
+const { main, sectionTitle, sectionBody, contentSection, contentGrid } = styles;
 
 export async function generateMetadata({
   params,
@@ -61,23 +52,13 @@ export default async function JournalismPage({
         {articles.length > 0 && (
           <div className={clsx(contentGrid)}>
             {articles.map((article) => (
-              <article key={article._id} className={clsx(card)}>
-                <h2 className={clsx(cardTitle)}>
-                  {article.externalUrl ? (
-                    <a href={article.externalUrl} target="_blank" rel="noopener noreferrer">
-                      {article.title ?? dictionary.common.untitled}
-                    </a>
-                  ) : (
-                    article.title ?? dictionary.common.untitled
-                  )}
-                </h2>
-                {article.category && (
-                  <span className={clsx(cardMeta)}>{article.category}</span>
-                )}
-                {article.excerpt && (
-                  <p className={clsx(cardDesc)}>{article.excerpt}</p>
-                )}
-              </article>
+              <ListingCard
+                key={article._id}
+                title={article.title ?? dictionary.common.untitled}
+                meta={article.category ?? undefined}
+                description={article.excerpt ?? undefined}
+                href={article.externalUrl ?? undefined}
+              />
             ))}
           </div>
         )}

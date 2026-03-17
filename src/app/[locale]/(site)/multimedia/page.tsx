@@ -1,21 +1,12 @@
 import clsx from 'clsx';
+import { ListingCard } from '@/components/ListingCard';
 import styles from '@/components/layout.module.scss';
 import { getDictionary } from '@/i18n/dictionaries';
 import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getMultimediaPage, getPodcastEpisodes } from '@/sanity/queries';
 
-const {
-  main,
-  sectionTitle,
-  sectionBody,
-  contentSection,
-  contentGrid,
-  card,
-  cardTitle,
-  cardDesc,
-  cardMeta,
-} = styles;
+const { main, sectionTitle, sectionBody, contentSection, contentGrid } = styles;
 
 export async function generateMetadata({
   params,
@@ -61,25 +52,17 @@ export default async function MultimediaPage({
         {episodes.length > 0 && (
           <div className={clsx(contentGrid)}>
             {episodes.map((episode) => (
-              <article key={episode._id} className={clsx(card)}>
-                <h2 className={clsx(cardTitle)}>
-                  {episode.audioUrl ? (
-                    <a href={episode.audioUrl} target="_blank" rel="noopener noreferrer">
-                      {episode.title ?? dictionary.common.untitled}
-                    </a>
-                  ) : (
-                    episode.title ?? dictionary.common.untitled
-                  )}
-                </h2>
-                {episode.duration != null && (
-                  <span className={clsx(cardMeta)}>
-                    {episode.duration} {dictionary.common.minutesShort}
-                  </span>
-                )}
-                {episode.description && (
-                  <p className={clsx(cardDesc)}>{episode.description}</p>
-                )}
-              </article>
+              <ListingCard
+                key={episode._id}
+                title={episode.title ?? dictionary.common.untitled}
+                meta={
+                  episode.duration != null
+                    ? `${episode.duration} ${dictionary.common.minutesShort}`
+                    : undefined
+                }
+                description={episode.description ?? undefined}
+                href={episode.audioUrl ?? undefined}
+              />
             ))}
           </div>
         )}

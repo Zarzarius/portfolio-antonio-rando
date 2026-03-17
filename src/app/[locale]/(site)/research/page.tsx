@@ -1,21 +1,12 @@
 import clsx from 'clsx';
+import { ListingCard } from '@/components/ListingCard';
 import styles from '@/components/layout.module.scss';
 import { getDictionary } from '@/i18n/dictionaries';
 import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getResearchPage, getResearchPapers } from '@/sanity/queries';
 
-const {
-  main,
-  sectionTitle,
-  sectionBody,
-  contentSection,
-  contentGrid,
-  card,
-  cardTitle,
-  cardDesc,
-  cardMeta,
-} = styles;
+const { main, sectionTitle, sectionBody, contentSection, contentGrid } = styles;
 
 export async function generateMetadata({
   params,
@@ -61,23 +52,13 @@ export default async function ResearchPage({
         {papers.length > 0 && (
           <div className={clsx(contentGrid)}>
             {papers.map((paper) => (
-              <article key={paper._id} className={clsx(card)}>
-                <h2 className={clsx(cardTitle)}>
-                  {paper.doi ? (
-                    <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer">
-                      {paper.title ?? dictionary.common.untitled}
-                    </a>
-                  ) : (
-                    paper.title ?? dictionary.common.untitled
-                  )}
-                </h2>
-                {paper.journal && (
-                  <span className={clsx(cardMeta)}>{paper.journal}</span>
-                )}
-                {paper.abstract && (
-                  <p className={clsx(cardDesc)}>{paper.abstract}</p>
-                )}
-              </article>
+              <ListingCard
+                key={paper._id}
+                title={paper.title ?? dictionary.common.untitled}
+                meta={paper.journal ?? undefined}
+                description={paper.abstract ?? undefined}
+                href={paper.doi ? `https://doi.org/${paper.doi}` : undefined}
+              />
             ))}
           </div>
         )}

@@ -34,6 +34,11 @@
   color: var(--color-text-primary);
   letter-spacing: var(--letter-spacing-badge);
   text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
 }
 
 .nav {
@@ -46,8 +51,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: none;
   border-radius: 0;
   background: transparent;
@@ -132,6 +137,11 @@
     color: var(--color-accent);
     background-color: var(--color-bg-card);
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 }
 
 .localeOptionActive {
@@ -165,6 +175,11 @@
     &::after {
       width: 100%;
     }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
   }
 }
 
@@ -642,6 +657,11 @@
     padding-top: 8px;
     padding-bottom: 8px;
     color: rgba(245, 248, 255, 0.9);
+  }
+
+  .localeOptionActive {
+    color: #000;
+    background-color: rgba(245, 248, 255, 0.96);
   }
 
   .menuOverlay {

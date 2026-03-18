@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'next-view-transitions';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -16,6 +16,7 @@ type SiteHeaderProps = {
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement | null>(null);
   const currentPath = withoutLocale(pathname || '/');
   const menuId = 'site-navigation-menu';
   const navItems = [
@@ -34,6 +35,24 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setIsMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen) return;
+    menuToggleRef.current?.focus();
+  }, [isMenuOpen]);
+
   return (
     <header className={styles.header}>
       <Link href={withLocale(locale, '/')} className={styles.logo}>
@@ -41,6 +60,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       </Link>
       <button
         type="button"
+        ref={menuToggleRef}
         className={clsx(
           styles.menuToggle,
           isMenuOpen && styles.menuToggleActive,

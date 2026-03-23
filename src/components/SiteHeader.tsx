@@ -56,7 +56,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
       <Link href={withLocale(locale, '/')} className={styles.logo}>
-        Antonio Rando
+        Antonio F. Rando Casermeiro
       </Link>
       <button
         type="button"

@@ -1,17 +1,18 @@
-# Antonio Rando — Portfolio
+# Antonio F. Rando Casermeiro — Portfolio
 
-Personal portfolio site for **Antonio Rando**: writer, teacher, and Doctor in History (PhD specialized in the Balkan countries). The site presents his work at the crossroads of literature, education, and historical scholarship—essays, fiction, teaching, and publications.
+Personal portfolio site for **Antonio F. Rando Casermeiro**: writer, teacher, and Doctor in History (PhD specialized in the Balkan countries). The site presents his work at the crossroads of literature, education, and historical scholarship—essays, fiction, teaching, and publications.
 
 ## Description
 
-A modern, accessible single-page-style site built with Next.js. It highlights Antonio’s identity as **Writer & Teacher** and his focus on how language shapes understanding and how stories connect people. Sections include a hero, about, writing (essays, fiction, publications), teaching (workshops, courses, mentoring), and contact.
+A modern, accessible site built with Next.js and Sanity. It highlights Antonio's identity as writer, teacher, and Doctor in History, with content focused on language, historical scholarship, and storytelling.
 
 **Pages:**
 
-- **Home** — Hero, short about, writing preview, teaching preview
+- **Home** — Hero, short bio, and featured content
 - **About** — Full bio and background
-- **Writing** — Essays, articles, fiction, and publications
-- **Teaching** — Workshops, courses, and one-to-one mentoring
+- **Journalism** — Essays, articles, and analysis
+- **Research** — Academic work and publications
+- **Multimedia** — Podcasts and audiovisual projects
 - **Contact** — Get in touch
 
 ## Tech Stack
@@ -43,37 +44,39 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Sanity Stud
 
 ## Scripts
 
-| Command   | Description              |
-| --------- | ------------------------ |
-| `pnpm dev`   | Start dev server         |
-| `pnpm build` | Build for production     |
-| `pnpm start` | Start production server  |
-| `pnpm lint`  | Run ESLint               |
+| Command      | Description             |
+| ------------ | ----------------------- |
+| `pnpm dev`   | Start dev server        |
+| `pnpm build` | Build for production    |
+| `pnpm start` | Start production server |
+| `pnpm lint`  | Run ESLint              |
 
-## Seeding page content (Sanity)
+## Routes
 
-The site has five editable page singletons in Sanity (Home, Writing, Teaching, About, Contact). To create or reset them with default copy:
+The app uses locale-prefixed routes:
 
-1. In Sanity Manage, create an API token with **Editor** (or write) access and set `SANITY_API_WRITE_TOKEN` in `.env.local`.
-2. Set `SEED_SECRET` to a long random string (e.g. 16+ chars) in `.env.local`.
-3. With the dev server running, run:
-   ```bash
-   curl -X POST "http://localhost:3000/api/seed-pages?secret=YOUR_SEED_SECRET"
-   ```
-   Or send `x-seed-secret: YOUR_SEED_SECRET` and `POST /api/seed-pages`.
+- `/{locale}` (home)
+- `/{locale}/about`
+- `/{locale}/journalism`
+- `/{locale}/research`
+- `/{locale}/multimedia`
+- `/{locale}/contact`
 
-Alternatively, open **Sanity Studio** at `/studio`, go to **Pages** and open each of Home, Writing, Teaching, About, Contact. The first time you open each, the document is created with that fixed ID; you can then edit content there. The site uses fallback copy until content exists.
+Sanity Studio is available at `/studio`.
 
 ## Project Structure
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── page.tsx            # Home
-│   ├── about/page.tsx
-│   ├── writing/page.tsx
-│   ├── teaching/page.tsx
-│   ├── contact/page.tsx
+├── app/                             # Next.js App Router
+│   ├── [locale]/(site)/             # Locale-prefixed site routes
+│   │   ├── page.tsx                 # Home
+│   │   ├── about/page.tsx
+│   │   ├── journalism/page.tsx
+│   │   ├── research/page.tsx
+│   │   ├── multimedia/page.tsx
+│   │   └── contact/page.tsx
+│   ├── studio/[[...tool]]/page.tsx # Embedded Sanity Studio
 │   ├── layout.tsx
 │   └── globals.css
 ├── components/
@@ -81,7 +84,7 @@ src/
 │   ├── SiteFooter.tsx
 │   └── layout.module.scss
 └── theme/
-    ├── tokens.ts
+    ├── tokens.ts           # Token exports for TypeScript usage
     └── tokens.scss         # Design tokens (colors, spacing, etc.)
 ```
 

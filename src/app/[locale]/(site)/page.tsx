@@ -65,7 +65,8 @@ export default async function HomePage({
   const aboutExcerpt = home?.aboutExcerpt ?? dictionary.home.aboutExcerpt;
   const journalismExcerpt =
     home?.journalismExcerpt ?? dictionary.home.journalismExcerpt;
-  const researchExcerpt = home?.researchExcerpt ?? dictionary.home.researchExcerpt;
+  const researchExcerpt =
+    home?.researchExcerpt ?? dictionary.home.researchExcerpt;
   const multimediaExcerpt =
     home?.multimediaExcerpt ?? dictionary.home.multimediaExcerpt;
 
@@ -138,21 +139,27 @@ export default async function HomePage({
             href={withLocale(locale, '/journalism')}
             className={clsx(card, cardLink)}
           >
-            <h3 className={clsx(cardTitle)}>{dictionary.home.journalismCardTitle}</h3>
+            <h3 className={clsx(cardTitle)}>
+              {dictionary.home.journalismCardTitle}
+            </h3>
             <p className={clsx(cardDesc)}>{journalismExcerpt}</p>
           </Link>
           <Link
             href={withLocale(locale, '/research')}
             className={clsx(card, cardLink)}
           >
-            <h3 className={clsx(cardTitle)}>{dictionary.home.researchCardTitle}</h3>
+            <h3 className={clsx(cardTitle)}>
+              {dictionary.home.researchCardTitle}
+            </h3>
             <p className={clsx(cardDesc)}>{researchExcerpt}</p>
           </Link>
           <Link
             href={withLocale(locale, '/multimedia')}
             className={clsx(card, cardLink)}
           >
-            <h3 className={clsx(cardTitle)}>{dictionary.home.multimediaCardTitle}</h3>
+            <h3 className={clsx(cardTitle)}>
+              {dictionary.home.multimediaCardTitle}
+            </h3>
             <p className={clsx(cardDesc)}>{multimediaExcerpt}</p>
           </Link>
         </div>
@@ -163,8 +170,15 @@ export default async function HomePage({
         className={clsx(sectionCard)}
         aria-labelledby="blog-embed-title"
       >
+        <Image
+          src="/images/elmundodesdeuntaburete-logo.jpeg"
+          alt="El mundo desde un taburete logo"
+          width={240}
+          height={180}
+          style={{ marginBottom: '0.75rem' }}
+        />
         <h2 className={clsx(sectionTitle)} id="blog-embed-title">
-          El mundo desde un taburete
+          Blog: El mundo desde un taburete
         </h2>
         <iframe
           src="https://www.elmundodesdeuntaburete.es/"

@@ -20,7 +20,8 @@ const fontBody = Inter({
 
 export const metadata: Metadata = {
   title: 'Antonio F. Rando Casermeiro — Portfolio',
-  description: 'Portfolio of Antonio Rando: design and development.',
+  description:
+    'Portfolio of Antonio F. Rando Casermeiro: design and development.',
   manifest: '/manifest.json',
   appleWebApp: {
     title: 'Antonio F. Rando Casermeiro Portfolio',

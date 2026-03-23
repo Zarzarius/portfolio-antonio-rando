@@ -36,7 +36,7 @@ export default async function MultimediaPage({
   const dictionary = getDictionary(locale);
   const [page, episodes] = await Promise.all([
     getMultimediaPage(locale),
-    getPodcastEpisodes(),
+    getPodcastEpisodes(locale),
   ]);
 
   const title = page?.title ?? dictionary.multimedia.title;

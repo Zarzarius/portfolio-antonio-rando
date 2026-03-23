@@ -36,7 +36,7 @@ export default async function JournalismPage({
   const dictionary = getDictionary(locale);
   const [page, articles] = await Promise.all([
     getJournalismPage(locale),
-    getJournalismArticles(),
+    getJournalismArticles(locale),
   ]);
 
   const title = page?.title ?? dictionary.journalism.title;

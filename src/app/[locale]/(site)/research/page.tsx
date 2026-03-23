@@ -36,7 +36,7 @@ export default async function ResearchPage({
   const dictionary = getDictionary(locale);
   const [page, papers] = await Promise.all([
     getResearchPage(locale),
-    getResearchPapers(),
+    getResearchPapers(locale),
   ]);
 
   const title = page?.title ?? dictionary.research.title;

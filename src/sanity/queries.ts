@@ -177,26 +177,53 @@ export async function getContactPage(
 
 // ── Content document fetchers ────────────────────────────────────────────
 
-export async function getJournalismArticles(): Promise<JournalismArticle[]> {
+export async function getJournalismArticles(
+  locale: Locale
+): Promise<JournalismArticle[]> {
   return client.fetch<JournalismArticle[]>(
     `*[_type == "journalismArticle"] | order(publishedAt desc) {
-      _id, title, slug, excerpt, publishedAt, category, externalUrl
-    }`
+      _id,
+      "title": coalesce(title[$locale], title.en, title),
+      slug,
+      "excerpt": coalesce(excerpt[$locale], excerpt.en, excerpt),
+      publishedAt,
+      "category": coalesce(category[$locale], category.en, category),
+      externalUrl
+    }`,
+    { locale }
   );
 }
 
-export async function getResearchPapers(): Promise<ResearchPaper[]> {
+export async function getResearchPapers(
+  locale: Locale
+): Promise<ResearchPaper[]> {
   return client.fetch<ResearchPaper[]>(
     `*[_type == "researchPaper"] | order(publishedAt desc) {
-      _id, title, slug, abstract, publishedAt, journal, doi
-    }`
+      _id,
+      "title": coalesce(title[$locale], title.en, title),
+      slug,
+      "abstract": coalesce(abstract[$locale], abstract.en, abstract),
+      publishedAt,
+      "journal": coalesce(journal[$locale], journal.en, journal),
+      doi
+    }`,
+    { locale }
   );
 }
 
-export async function getPodcastEpisodes(): Promise<PodcastEpisode[]> {
+export async function getPodcastEpisodes(
+  locale: Locale
+): Promise<PodcastEpisode[]> {
   return client.fetch<PodcastEpisode[]>(
     `*[_type == "podcastEpisode"] | order(publishedAt desc) {
-      _id, title, slug, description, publishedAt, audioUrl, duration
-    }`
+      _id,
+      "title": coalesce(title[$locale], title.en, title),
+      slug,
+      "description": coalesce(description[$locale], description.en, description),
+      publishedAt,
+      audioUrl,
+      duration
+    }`,
+    { locale }
   );
 }

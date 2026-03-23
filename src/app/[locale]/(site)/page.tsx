@@ -157,6 +157,26 @@ export default async function HomePage({
           </Link>
         </div>
       </section>
+
+      <section
+        id="blog-embed"
+        className={clsx(sectionCard)}
+        aria-labelledby="blog-embed-title"
+      >
+        <h2 className={clsx(sectionTitle)} id="blog-embed-title">
+          El mundo desde un taburete
+        </h2>
+        <iframe
+          src="https://www.elmundodesdeuntaburete.es/"
+          title="El mundo desde un taburete"
+          loading="lazy"
+          style={{
+            width: '100%',
+            minHeight: '720px',
+            border: 0,
+          }}
+        />
+      </section>
     </main>
   );
 }

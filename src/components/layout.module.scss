@@ -244,6 +244,10 @@
   letter-spacing: var(--letter-spacing-hero);
   color: var(--color-text-primary);
   margin: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .heroSubline {
@@ -570,6 +574,21 @@
   .heroInner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .heroContent {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .heroHeadline {
+    font-size: clamp(2.15rem, 10vw, 3.1rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .heroSubline {
+    font-size: clamp(1.1rem, 4.8vw, 1.45rem);
   }
 
   .heroImageWrap {

@@ -24,6 +24,14 @@ const {
   sectionCard,
   sectionTitle,
   sectionBody,
+  blogEmbed,
+  blogEmbedHeader,
+  blogEmbedLogoWrap,
+  blogEmbedLogo,
+  blogEmbedTitleWrap,
+  blogEmbedKicker,
+  blogEmbedFrame,
+  blogEmbedIframe,
   aboutBody,
   contentSection,
   contentGrid,
@@ -167,29 +175,34 @@ export default async function HomePage({
 
       <section
         id="blog-embed"
-        className={clsx(sectionCard)}
+        className={clsx(sectionCard, blogEmbed)}
         aria-labelledby="blog-embed-title"
       >
-        <Image
-          src="/images/elmundodesdeuntaburete-logo.jpeg"
-          alt="El mundo desde un taburete logo"
-          width={240}
-          height={180}
-          style={{ marginBottom: '0.75rem' }}
-        />
-        <h2 className={clsx(sectionTitle)} id="blog-embed-title">
-          Blog: El mundo desde un taburete
-        </h2>
-        <iframe
-          src="https://www.elmundodesdeuntaburete.es/"
-          title="El mundo desde un taburete"
-          loading="lazy"
-          style={{
-            width: '100%',
-            minHeight: '720px',
-            border: 0,
-          }}
-        />
+        <div className={blogEmbedHeader}>
+          <div className={blogEmbedLogoWrap}>
+            <Image
+              src="/images/elmundodesdeuntaburete-logo.jpeg"
+              alt="El mundo desde un taburete logo"
+              width={240}
+              height={180}
+              className={blogEmbedLogo}
+            />
+          </div>
+          <div className={blogEmbedTitleWrap}>
+            <span className={blogEmbedKicker}>Featured Blog</span>
+            <h2 className={clsx(sectionTitle)} id="blog-embed-title">
+              El mundo desde un taburete
+            </h2>
+          </div>
+        </div>
+        <div className={blogEmbedFrame}>
+          <iframe
+            src="https://www.elmundodesdeuntaburete.es/"
+            title="El mundo desde un taburete"
+            loading="lazy"
+            className={blogEmbedIframe}
+          />
+        </div>
       </section>
     </main>
   );

@@ -101,23 +101,15 @@ export default async function HomePage({
               role="img"
               aria-label={heroHeadlineText}
             >
-              {heroImageUrl ? (
-                <Image
-                  src={heroImageUrl}
-                  alt={heroHeadlineText}
-                  width={500}
-                  height={500}
-                  className={heroImageImg}
-                />
-              ) : (
-                <Image
-                  src="/images/antonio.png"
-                  alt={heroHeadlineText}
-                  width={500}
-                  height={500}
-                  className={heroImageImg}
-                />
-              )}
+              <Image
+                src={heroImageUrl || '/images/antonio.png'}
+                alt={heroHeadlineText}
+                loading="eager"
+                width={500}
+                height={500}
+                priority
+                className={heroImageImg}
+              />
             </div>
           </div>
         </div>

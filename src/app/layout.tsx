@@ -1,10 +1,22 @@
-import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
 import { ViewTransitions } from 'next-view-transitions';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
-import { defaultLocale, isLocale } from '@/i18n/config';
+import { defaultLocale } from '@/i18n/config';
 import '../theme/tokens.scss';
 import './globals.css';
+
+function resolveSiteOrigin(): string {
+  const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (envSiteUrl) {
+    return envSiteUrl.replace(/\/$/, '');
+  }
+
+  const vercelProdUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercelProdUrl) {
+    return `https://${vercelProdUrl}`;
+  }
+
+  return 'http://localhost:3000';
+}
 
 const fontDisplay = Cormorant_Garamond({
   variable: '--font-display',
@@ -18,10 +30,11 @@ const fontBody = Inter({
   weight: ['400', '500', '600'],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Antonio F. Rando Casermeiro — Portfolio',
   description:
     'Portfolio of Antonio F. Rando Casermeiro: design and development.',
+  metadataBase: new URL(resolveSiteOrigin()),
   manifest: '/manifest.json',
   appleWebApp: {
     title: 'Antonio F. Rando Casermeiro Portfolio',
@@ -33,12 +46,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const localeFromCookie = cookieStore.get('site-locale')?.value;
-  const htmlLang =
-    localeFromCookie && isLocale(localeFromCookie)
-      ? localeFromCookie
-      : defaultLocale;
+  const htmlLang = defaultLocale;
 
   return (
     <ViewTransitions>

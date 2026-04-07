@@ -5,7 +5,8 @@ import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getAboutPage } from '@/sanity/queries';
 
-const { main, sectionCard, sectionTitle, sectionBody, aboutBody } = styles;
+const { main, sectionCard, sectionTitle, sectionBody, aboutBody, cmsBodyText } =
+  styles;
 
 export async function generateMetadata({
   params,
@@ -41,7 +42,7 @@ export default async function AboutPage({
         <h1 className={clsx(sectionTitle)} id="about-title">
           {title}
         </h1>
-        <p className={clsx(aboutBody, sectionBody)}>{body}</p>
+        <p className={clsx(aboutBody, sectionBody, cmsBodyText)}>{body}</p>
       </section>
     </main>
   );

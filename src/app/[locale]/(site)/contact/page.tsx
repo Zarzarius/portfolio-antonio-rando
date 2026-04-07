@@ -5,7 +5,8 @@ import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getContactPage } from '@/sanity/queries';
 
-const { main, sectionCard, sectionTitle, sectionBody, footerLink } = styles;
+const { main, sectionCard, sectionTitle, sectionBody, footerLink, cmsBodyText } =
+  styles;
 
 const DEFAULT_EMAIL = 'casermeiro@gmail.com';
 
@@ -46,7 +47,7 @@ export default async function ContactPage({
         <h1 className={clsx(sectionTitle)} id="contact-title">
           {title}
         </h1>
-        <p className={clsx(sectionBody)}>{body}</p>
+        <p className={clsx(sectionBody, cmsBodyText)}>{body}</p>
         <p className={clsx(sectionBody)}>
           <a href={`mailto:${email}`} className={clsx(footerLink)}>
             {email}

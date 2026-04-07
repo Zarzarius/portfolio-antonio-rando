@@ -6,7 +6,8 @@ import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getJournalismPage, getJournalismArticles } from '@/sanity/queries';
 
-const { main, sectionTitle, sectionBody, contentSection, contentGrid } = styles;
+const { main, sectionTitle, sectionBody, contentSection, contentGrid, cmsBodyText } =
+  styles;
 
 export async function generateMetadata({
   params,
@@ -48,7 +49,7 @@ export default async function JournalismPage({
         <h1 className={clsx(sectionTitle)} id="journalism-title">
           {title}
         </h1>
-        {body ? <p className={clsx(sectionBody)}>{body}</p> : null}
+        {body ? <p className={clsx(sectionBody, cmsBodyText)}>{body}</p> : null}
         {articles.length > 0 && (
           <div className={clsx(contentGrid)}>
             {articles.map((article) => (

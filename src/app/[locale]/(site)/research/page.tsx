@@ -6,7 +6,8 @@ import { buildLocaleMetadata } from '@/i18n/metadata';
 import { readLocale } from '@/i18n/params';
 import { getResearchPage, getResearchPapers } from '@/sanity/queries';
 
-const { main, sectionTitle, sectionBody, contentSection, contentGrid } = styles;
+const { main, sectionTitle, sectionBody, contentSection, contentGrid, cmsBodyText } =
+  styles;
 
 export async function generateMetadata({
   params,
@@ -48,7 +49,7 @@ export default async function ResearchPage({
         <h1 className={clsx(sectionTitle)} id="research-title">
           {title}
         </h1>
-        {body ? <p className={clsx(sectionBody)}>{body}</p> : null}
+        {body ? <p className={clsx(sectionBody, cmsBodyText)}>{body}</p> : null}
         {papers.length > 0 && (
           <div className={clsx(contentGrid)}>
             {papers.map((paper) => (

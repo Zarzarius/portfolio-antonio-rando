@@ -382,6 +382,10 @@
   max-width: var(--max-width-body);
 }
 
+.cmsBodyText {
+  white-space: pre-line;
+}
+
 .aboutBody {
   max-width: var(--max-width-body);
 }

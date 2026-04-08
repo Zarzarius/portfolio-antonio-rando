@@ -12,6 +12,10 @@ export type HomePage = {
   heroSubline: string | null
   heroImage: { asset: { _ref: string }; alt?: string } | null
   aboutExcerpt: string | null
+  aboutHighlightOne: string | null
+  aboutHighlightTwo: string | null
+  aboutHighlightThree: string | null
+  aboutCta: string | null
   journalismExcerpt: string | null
   researchExcerpt: string | null
   multimediaExcerpt: string | null
@@ -98,6 +102,10 @@ export async function getHomePage(locale: Locale): Promise<HomePage | null> {
       "heroSubline": coalesce(heroSubline[$locale], heroSubline.en, heroSubline),
       heroImage,
       "aboutExcerpt": coalesce(aboutExcerpt[$locale], aboutExcerpt.en, aboutExcerpt),
+      "aboutHighlightOne": coalesce(aboutHighlightOne[$locale], aboutHighlightOne.en, aboutHighlightOne),
+      "aboutHighlightTwo": coalesce(aboutHighlightTwo[$locale], aboutHighlightTwo.en, aboutHighlightTwo),
+      "aboutHighlightThree": coalesce(aboutHighlightThree[$locale], aboutHighlightThree.en, aboutHighlightThree),
+      "aboutCta": coalesce(aboutCta[$locale], aboutCta.en, aboutCta),
       "journalismExcerpt": coalesce(journalismExcerpt[$locale], journalismExcerpt.en, journalismExcerpt),
       "researchExcerpt": coalesce(researchExcerpt[$locale], researchExcerpt.en, researchExcerpt),
       "multimediaExcerpt": coalesce(multimediaExcerpt[$locale], multimediaExcerpt.en, multimediaExcerpt)

@@ -23,6 +23,10 @@ export type SiteDictionary = {
     heroBadge: string;
     heroSubline: string;
     aboutExcerpt: string;
+    aboutHighlightOne: string;
+    aboutHighlightTwo: string;
+    aboutHighlightThree: string;
+    aboutCta: string;
     journalismExcerpt: string;
     researchExcerpt: string;
     multimediaExcerpt: string;
@@ -79,6 +83,13 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       heroSubline: 'Journalism, academic research, and multimedia storytelling.',
       aboutExcerpt:
         "I'm a journalist, researcher, and Doctor in History with a PhD specialized in the Balkan countries. Through journalism, academic work, and multimedia, I explore how language shapes understanding and how stories connect people.",
+      aboutHighlightOne:
+        'I work across journalism, scholarship, and teaching to connect complex topics with public conversation.',
+      aboutHighlightTwo:
+        'My focus includes Balkan history, political culture, and the narratives that shape collective memory.',
+      aboutHighlightThree:
+        'Each project combines rigorous research with clear storytelling for readers, students, and broader audiences.',
+      aboutCta: 'Read full profile',
       journalismExcerpt:
         'Opinion pieces, analysis, and reportage on culture, politics, and the Balkans.',
       researchExcerpt:
@@ -141,6 +152,13 @@ const dictionaries: Record<Locale, SiteDictionary> = {
         'Journalismus, akademische Forschung und multimediales Storytelling.',
       aboutExcerpt:
         'Ich bin Journalist, Forscher und promovierter Historiker mit Spezialisierung auf die Balkanlander. Durch Journalismus, akademische Arbeit und Multimedia untersuche ich, wie Sprache Verstandnis formt und wie Geschichten Menschen verbinden.',
+      aboutHighlightOne:
+        'Ich verbinde Journalismus, Forschung und Lehre, um komplexe Themen fur ein breites Publikum zuganglich zu machen.',
+      aboutHighlightTwo:
+        'Mein Schwerpunkt liegt auf Balkan-Geschichte, politischer Kultur und den Erzahlungen, die kollektive Erinnerung pragen.',
+      aboutHighlightThree:
+        'Jedes Projekt verbindet wissenschaftliche Strenge mit klarer Sprache fur Leserinnen, Leser und Studierende.',
+      aboutCta: 'Ganzes Profil lesen',
       journalismExcerpt:
         'Meinungsbeitrage, Analysen und Reportagen zu Kultur, Politik und dem Balkan.',
       researchExcerpt:
@@ -204,6 +222,13 @@ const dictionaries: Record<Locale, SiteDictionary> = {
         'Periodismo, investigacion academica y narrativa multimedia.',
       aboutExcerpt:
         'Soy periodista, investigador y doctor en Historia con especializacion en los Balcanes. A traves del periodismo, el trabajo academico y el multimedia, exploro como el lenguaje da forma a la comprension y como las historias conectan a las personas.',
+      aboutHighlightOne:
+        'Trabajo entre periodismo, investigacion y docencia para acercar temas complejos al debate publico.',
+      aboutHighlightTwo:
+        'Me centro en la historia de los Balcanes, la cultura politica y los relatos que moldean la memoria colectiva.',
+      aboutHighlightThree:
+        'Cada proyecto combina rigor academico con narrativa clara para lectores, estudiantes y audiencias amplias.',
+      aboutCta: 'Ver perfil completo',
       journalismExcerpt:
         'Articulos de opinion, analisis y reportajes sobre cultura, politica y los Balcanes.',
       researchExcerpt:

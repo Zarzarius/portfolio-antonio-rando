@@ -73,14 +73,15 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       contact: 'Contact',
     },
     common: {
-      work: 'Work',
+      work: 'Publications',
       untitled: 'Untitled',
       minutesShort: 'min',
     },
     home: {
       aboutHeading: 'About',
       heroBadge: 'Journalist & Researcher',
-      heroSubline: 'Journalism, academic research, and multimedia storytelling.',
+      heroSubline:
+        'Journalism, academic research, and multimedia storytelling.',
       aboutExcerpt:
         "I'm a journalist, researcher, and Doctor in History with a PhD specialized in the Balkan countries. Through journalism, academic work, and multimedia, I explore how language shapes understanding and how stories connect people.",
       aboutHighlightOne:
@@ -104,8 +105,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       title: 'About',
       description:
         'Antonio Rando is a writer, teacher, and Doctor in History with a PhD specialized in the Balkan countries.',
-      body:
-        'Antonio Rando is a writer, teacher, and Doctor in History with a PhD specialized in the Balkan countries. His work sits at the crossroads of literature, education, and historical scholarship. Through essays, fiction, and teaching, he explores how language shapes understanding and how stories connect us.',
+      body: 'Antonio Rando is a writer, teacher, and Doctor in History with a PhD specialized in the Balkan countries. His work sits at the crossroads of literature, education, and historical scholarship. Through essays, fiction, and teaching, he explores how language shapes understanding and how stories connect us.',
     },
     journalism: {
       title: 'Journalism & Analysis',
@@ -113,7 +113,8 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     },
     research: {
       title: 'Academic Research',
-      description: 'Academic papers, publications, and research by Antonio Rando.',
+      description:
+        'Academic papers, publications, and research by Antonio Rando.',
     },
     multimedia: {
       title: 'Multimedia & Podcast',
@@ -123,8 +124,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     contact: {
       title: 'Contact',
       description: 'Get in touch with Antonio Rando.',
-      body:
-        'For inquiries about writing, teaching, or collaborations, please reach out by email.',
+      body: 'For inquiries about writing, teaching, or collaborations, please reach out by email.',
     },
   },
   de: {
@@ -141,7 +141,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       contact: 'Kontakt',
     },
     common: {
-      work: 'Arbeit',
+      work: 'Veröffentlichungen',
       untitled: 'Ohne Titel',
       minutesShort: 'Min',
     },
@@ -173,12 +173,12 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       title: 'Uber mich',
       description:
         'Antonio Rando ist Autor, Dozent und promovierter Historiker mit Spezialisierung auf die Balkanlander.',
-      body:
-        'Antonio Rando ist Autor, Dozent und promovierter Historiker mit Spezialisierung auf die Balkanlander. Seine Arbeit liegt an der Schnittstelle von Literatur, Bildung und Geschichtswissenschaft. Mit Essays, Erzahlungen und Lehre untersucht er, wie Sprache Verstandnis formt und wie Geschichten uns verbinden.',
+      body: 'Antonio Rando ist Autor, Dozent und promovierter Historiker mit Spezialisierung auf die Balkanlander. Seine Arbeit liegt an der Schnittstelle von Literatur, Bildung und Geschichtswissenschaft. Mit Essays, Erzahlungen und Lehre untersucht er, wie Sprache Verstandnis formt und wie Geschichten uns verbinden.',
     },
     journalism: {
       title: 'Journalismus und Analyse',
-      description: 'Meinungsbeitrage, Analysen und Reportagen von Antonio Rando.',
+      description:
+        'Meinungsbeitrage, Analysen und Reportagen von Antonio Rando.',
     },
     research: {
       title: 'Akademische Forschung',
@@ -193,8 +193,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     contact: {
       title: 'Kontakt',
       description: 'Kontaktieren Sie Antonio Rando.',
-      body:
-        'Fur Anfragen zu Schreiben, Lehre oder Zusammenarbeit kontaktieren Sie mich per E-Mail.',
+      body: 'Fur Anfragen zu Schreiben, Lehre oder Zusammenarbeit kontaktieren Sie mich per E-Mail.',
     },
   },
   es: {
@@ -211,7 +210,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       contact: 'Contacto',
     },
     common: {
-      work: 'Trabajo',
+      work: 'Publicaciones',
       untitled: 'Sin titulo',
       minutesShort: 'min',
     },
@@ -243,8 +242,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       title: 'Sobre mi',
       description:
         'Antonio Rando es escritor, docente y doctor en Historia con especializacion en los Balcanes.',
-      body:
-        'Antonio Rando es escritor, docente y doctor en Historia con especializacion en los Balcanes. Su trabajo se ubica en la interseccion entre literatura, educacion e investigacion historica. A traves de ensayos, ficcion y docencia, explora como el lenguaje da forma a la comprension y como las historias nos conectan.',
+      body: 'Antonio Rando es escritor, docente y doctor en Historia con especializacion en los Balcanes. Su trabajo se ubica en la interseccion entre literatura, educacion e investigacion historica. A traves de ensayos, ficcion y docencia, explora como el lenguaje da forma a la comprension y como las historias nos conectan.',
     },
     journalism: {
       title: 'Periodismo y analisis',
@@ -264,8 +262,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     contact: {
       title: 'Contacto',
       description: 'Ponte en contacto con Antonio Rando.',
-      body:
-        'Para consultas sobre escritura, docencia o colaboraciones, escribeme por correo electronico.',
+      body: 'Para consultas sobre escritura, docencia o colaboraciones, escribeme por correo electronico.',
     },
   },
 };

@@ -33,6 +33,10 @@ const {
   blogEmbedFrame,
   blogEmbedIframe,
   aboutBody,
+  aboutLead,
+  aboutHighlights,
+  aboutHighlight,
+  aboutCta,
   contentSection,
   contentGrid,
   card,
@@ -71,6 +75,12 @@ export default async function HomePage({
   const heroHeadlineText = home?.heroHeadline ?? 'Antonio Rando';
   const heroSublineText = home?.heroSubline ?? dictionary.home.heroSubline;
   const aboutExcerpt = home?.aboutExcerpt ?? dictionary.home.aboutExcerpt;
+  const aboutHighlightItems = [
+    home?.aboutHighlightOne ?? dictionary.home.aboutHighlightOne,
+    home?.aboutHighlightTwo ?? dictionary.home.aboutHighlightTwo,
+    home?.aboutHighlightThree ?? dictionary.home.aboutHighlightThree,
+  ];
+  const aboutCtaText = home?.aboutCta ?? dictionary.home.aboutCta;
   const journalismExcerpt =
     home?.journalismExcerpt ?? dictionary.home.journalismExcerpt;
   const researchExcerpt =
@@ -123,7 +133,17 @@ export default async function HomePage({
         <h2 className={clsx(sectionTitle)} id="about-title">
           {dictionary.home.aboutHeading}
         </h2>
-        <p className={clsx(aboutBody, sectionBody)}>{aboutExcerpt}</p>
+        <p className={clsx(aboutBody, sectionBody, aboutLead)}>{aboutExcerpt}</p>
+        <ul className={clsx(aboutHighlights)} aria-label={dictionary.home.aboutHeading}>
+          {aboutHighlightItems.map((item) => (
+            <li key={item} className={clsx(aboutHighlight, sectionBody)}>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <Link href={withLocale(locale, '/about')} className={clsx(aboutCta)}>
+          {aboutCtaText}
+        </Link>
       </section>
 
       <section

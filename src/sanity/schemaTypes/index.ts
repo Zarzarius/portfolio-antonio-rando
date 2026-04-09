@@ -155,7 +155,7 @@ const researchPaper = defineType({
     defineField({ name: 'abstract', title: 'Abstract', type: 'localizedText' }),
     defineField({ name: 'publishedAt', title: 'Published at', type: 'datetime' }),
     defineField({ name: 'journal', title: 'Journal / Publisher', type: 'localizedString' }),
-    defineField({ name: 'doi', title: 'DOI', type: 'string' }),
+    defineField({ name: 'url', title: 'URL', type: 'url' }),
   ],
 });
 

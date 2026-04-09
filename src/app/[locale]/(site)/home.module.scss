@@ -1,14 +1,8 @@
 .workShowcase {
   gap: 32px;
-  background:
-    radial-gradient(circle at 16% 18%, rgba(196, 30, 58, 0.08) 0%, transparent 54%),
-    radial-gradient(circle at 88% 14%, rgba(15, 15, 15, 0.06) 0%, transparent 42%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-bg-card) 94%, #fff 6%) 0%,
-      var(--color-bg-card) 100%
-    );
-  border: 1px solid rgba(15, 15, 15, 0.08);
+  margin-top: 28px;
+  background: var(--color-bg-card);
+  // border: 1px solid rgba(15, 15, 15, 0.08);
 }
 
 .workShowcaseHeader {
@@ -25,8 +19,8 @@
 
 .workShowcaseGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .workPanel {
@@ -37,9 +31,7 @@
   padding: 24px;
   text-decoration: none;
   color: inherit;
-  background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 242, 236, 0.74) 100%),
-    var(--color-bg-card);
+  background: var(--color-bg-card);
   border: 1px solid rgba(15, 15, 15, 0.1);
   overflow: hidden;
   transition:
@@ -52,9 +44,9 @@
   content: '';
   position: absolute;
   inset: 0 auto auto 0;
-  width: 68%;
+  width: 52px;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-accent) 0%, rgba(196, 30, 58, 0) 100%);
+  background: var(--color-accent);
 }
 
 .workPanel:hover {
@@ -66,19 +58,6 @@
 .workPanel:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-}
-
-.workPanelFeatured {
-  min-height: 360px;
-  justify-content: flex-end;
-  background:
-    radial-gradient(circle at 76% 20%, rgba(196, 30, 58, 0.14) 0%, transparent 34%),
-    linear-gradient(155deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 235, 227, 0.95) 100%);
-}
-
-.workPanelStack {
-  display: grid;
-  gap: 18px;
 }
 
 .workPanelHeader {
@@ -100,17 +79,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 15, 15, 0.12);
-  background-color: rgba(255, 255, 255, 0.72);
+  width: auto;
+  height: auto;
+  color: var(--color-text-secondary);
 }
 
 .workPanelIcon {
-  width: auto;
-  height: auto;
-  opacity: 0.7;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
 }
 
 .workPanelTitle {
@@ -141,68 +118,18 @@
   color: var(--color-text-primary);
 }
 
-.workQuickNav {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.workQuickLink {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid rgba(15, 15, 15, 0.1);
-  background-color: rgba(255, 255, 255, 0.78);
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.workQuickLink:hover {
-  border-color: rgba(196, 30, 58, 0.4);
-  background-color: #fff;
-}
-
-.workQuickLink:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-
-.workQuickIndex {
-  font-family: var(--font-body);
-  font-size: var(--font-size-label);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-badge);
-  color: var(--color-accent);
-}
-
-.workQuickLabel {
-  font-family: var(--font-body);
-  font-size: var(--font-size-body-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-}
-
 @media (max-width: 960px) {
   .workShowcaseGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .workPanelFeatured {
-    min-height: 300px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .workQuickNav {
+  .workShowcaseGrid {
     grid-template-columns: 1fr;
   }
 
-  .workPanel,
-  .workQuickLink {
+  .workPanel {
     padding: 18px;
   }
 }

@@ -46,8 +46,6 @@ const {
   workShowcaseIntro,
   workShowcaseGrid,
   workPanel,
-  workPanelFeatured,
-  workPanelStack,
   workPanelHeader,
   workPanelIndex,
   workPanelIconWrap,
@@ -55,10 +53,6 @@ const {
   workPanelTitle,
   workPanelDesc,
   workPanelMeta,
-  workQuickNav,
-  workQuickLink,
-  workQuickIndex,
-  workQuickLabel,
 } = homeStyles;
 
 export async function generateMetadata({
@@ -118,27 +112,24 @@ export default async function HomePage({
       href: withLocale(locale, '/journalism'),
       title: dictionary.home.journalismCardTitle,
       description: journalismExcerpt,
-      icon: '/globe.svg',
+      icon: '/icons/journalism.svg',
       navLabel: dictionary.nav.journalism,
     },
     {
       href: withLocale(locale, '/research'),
       title: dictionary.home.researchCardTitle,
       description: researchExcerpt,
-      icon: '/file.svg',
+      icon: '/icons/research.svg',
       navLabel: dictionary.nav.research,
     },
     {
       href: withLocale(locale, '/multimedia'),
       title: dictionary.home.multimediaCardTitle,
       description: multimediaExcerpt,
-      icon: '/window.svg',
+      icon: '/icons/multimedia.svg',
       navLabel: dictionary.nav.multimedia,
     },
   ];
-
-  const featuredPanel = workPanels[0]!;
-  const secondaryPanels = workPanels.slice(1);
 
   return (
     <main className={clsx(main)}>
@@ -182,8 +173,13 @@ export default async function HomePage({
         <h2 className={clsx(sectionTitle)} id="about-title">
           {dictionary.home.aboutHeading}
         </h2>
-        <p className={clsx(aboutBody, sectionBody, aboutLead)}>{aboutExcerpt}</p>
-        <ul className={clsx(aboutHighlights)} aria-label={dictionary.home.aboutHeading}>
+        <p className={clsx(aboutBody, sectionBody, aboutLead)}>
+          {aboutExcerpt}
+        </p>
+        <ul
+          className={clsx(aboutHighlights)}
+          aria-label={dictionary.home.aboutHeading}
+        >
           {aboutHighlightItems.map((item) => (
             <li key={item} className={clsx(aboutHighlight, sectionBody)}>
               {item}
@@ -204,61 +200,29 @@ export default async function HomePage({
           <h2 className={clsx(sectionTitle)} id="sections-title">
             {dictionary.common.work}
           </h2>
-          <p className={clsx(sectionBody, workShowcaseIntro)}>{heroSublineText}</p>
+          {/* <p className={clsx(sectionBody, workShowcaseIntro)}>{heroSublineText}</p> */}
         </div>
         <div className={workShowcaseGrid}>
-          <Link
-            href={featuredPanel.href}
-            className={clsx(workPanel, workPanelFeatured)}
-          >
-            <div className={workPanelHeader}>
-              <span className={workPanelIndex}>01</span>
-              <span className={workPanelIconWrap} aria-hidden>
-                <Image
-                  src={featuredPanel.icon}
-                  alt=""
-                  width={28}
-                  height={28}
-                  className={workPanelIcon}
-                />
-              </span>
-            </div>
-            <h3 className={workPanelTitle}>{featuredPanel.title}</h3>
-            <p className={workPanelDesc}>{featuredPanel.description}</p>
-            <span className={workPanelMeta}>{featuredPanel.navLabel}</span>
-          </Link>
-
-          <div className={workPanelStack}>
-            {secondaryPanels.map((panel, index) => (
-              <Link key={panel.href} href={panel.href} className={workPanel}>
-                <div className={workPanelHeader}>
-                  <span className={workPanelIndex}>{`0${index + 2}`}</span>
-                  <span className={workPanelIconWrap} aria-hidden>
-                    <Image
-                      src={panel.icon}
-                      alt=""
-                      width={24}
-                      height={24}
-                      className={workPanelIcon}
-                    />
-                  </span>
-                </div>
-                <h3 className={workPanelTitle}>{panel.title}</h3>
-                <p className={workPanelDesc}>{panel.description}</p>
-                <span className={workPanelMeta}>{panel.navLabel}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <nav className={workQuickNav} aria-label={dictionary.common.work}>
           {workPanels.map((panel, index) => (
-            <Link key={`quick-${panel.href}`} href={panel.href} className={workQuickLink}>
-              <span className={workQuickIndex}>{`0${index + 1}`}</span>
-              <span className={workQuickLabel}>{panel.navLabel}</span>
+            <Link key={panel.href} href={panel.href} className={workPanel}>
+              <div className={workPanelHeader}>
+                <span className={workPanelIndex}>{`0${index + 1}`}</span>
+                <span className={workPanelIconWrap} aria-hidden>
+                  <Image
+                    src={panel.icon}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className={workPanelIcon}
+                  />
+                </span>
+              </div>
+              <h3 className={workPanelTitle}>{panel.title}</h3>
+              <p className={workPanelDesc}>{panel.description}</p>
+              <span className={workPanelMeta}>{panel.navLabel}</span>
             </Link>
           ))}
-        </nav>
+        </div>
       </section>
 
       <section

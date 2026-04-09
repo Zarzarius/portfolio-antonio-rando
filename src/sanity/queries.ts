@@ -76,7 +76,7 @@ export type ResearchPaper = {
   abstract: string | null
   publishedAt: string | null
   journal: string | null
-  doi: string | null
+  url: string | null
 }
 
 export type PodcastEpisode = {
@@ -213,7 +213,7 @@ export async function getResearchPapers(
       "abstract": coalesce(abstract[$locale], abstract.en, abstract),
       publishedAt,
       "journal": coalesce(journal[$locale], journal.en, journal),
-      doi
+      url
     }`,
     { locale }
   );

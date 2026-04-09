@@ -69,7 +69,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       mainAriaLabel: 'Main',
     },
     footer: {
-      tagline: 'Journalist & Researcher',
+      tagline: 'Researcher & Writer',
       contact: 'Contact',
     },
     common: {
@@ -79,7 +79,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     },
     home: {
       aboutHeading: 'About',
-      heroBadge: 'Journalist & Researcher',
+      heroBadge: 'Researcher & Writer',
       heroSubline:
         'Journalism, academic research, and multimedia storytelling.',
       aboutExcerpt:
@@ -137,7 +137,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       mainAriaLabel: 'Hauptnavigation',
     },
     footer: {
-      tagline: 'Journalist und Forscher',
+      tagline: 'Forscher und Autor',
       contact: 'Kontakt',
     },
     common: {
@@ -147,7 +147,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     },
     home: {
       aboutHeading: 'Uber mich',
-      heroBadge: 'Journalist und Forscher',
+      heroBadge: 'Forscher und Autor',
       heroSubline:
         'Journalismus, akademische Forschung und multimediales Storytelling.',
       aboutExcerpt:
@@ -206,7 +206,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       mainAriaLabel: 'Principal',
     },
     footer: {
-      tagline: 'Periodista e investigador',
+      tagline: 'Investigador y autor',
       contact: 'Contacto',
     },
     common: {
@@ -216,7 +216,7 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     },
     home: {
       aboutHeading: 'Sobre mi',
-      heroBadge: 'Periodista e investigador',
+      heroBadge: 'Investigador y autor',
       heroSubline:
         'Periodismo, investigacion academica y narrativa multimedia.',
       aboutExcerpt:

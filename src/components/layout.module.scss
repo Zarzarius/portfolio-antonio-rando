@@ -9,6 +9,24 @@
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-bg-page);
+  background-image:
+    radial-gradient(
+      1200px 760px at 12% -10%,
+      color-mix(in srgb, var(--color-accent) 13%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      960px 640px at 88% 8%,
+      color-mix(in srgb, var(--color-bg-warm) 72%, #fff 28%),
+      transparent 70%
+    ),
+    radial-gradient(
+      900px 700px at 48% 100%,
+      color-mix(in srgb, var(--color-accent) 8%, transparent),
+      transparent 74%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* ─── Header ───────────────────────────────────────────────────────────── */
@@ -22,9 +40,24 @@
   padding: var(--padding-header-y) var(--padding-header-x);
   max-width: 1440px;
   margin: 0 auto;
-  background-color: var(--color-bg-page);
+  background-color: transparent;
   flex-shrink: 0;
   view-transition-name: site-header;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background-color: color-mix(in srgb, var(--color-bg-page) 86%, #fff 14%);
+    box-shadow:
+      0 1px 0 rgba(15, 15, 15, 0.06),
+      0 8px 20px rgba(15, 15, 15, 0.035);
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 .logo {
@@ -671,6 +704,10 @@
   .header {
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
+  }
+
+  .logo {
+    font-size: clamp(18px, 4.8vw, 20px);
   }
 
   .hero,

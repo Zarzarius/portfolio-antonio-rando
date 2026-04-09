@@ -58,7 +58,7 @@ export default async function ResearchPage({
                 title={paper.title ?? dictionary.common.untitled}
                 meta={paper.journal ?? undefined}
                 description={paper.abstract ?? undefined}
-                href={paper.doi ? `https://doi.org/${paper.doi}` : undefined}
+                href={paper.url ?? undefined}
               />
             ))}
           </div>

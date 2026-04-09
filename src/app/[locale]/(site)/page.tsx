@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Link } from 'next-view-transitions';
 import styles from '@/components/layout.module.scss';
+import homeStyles from './home.module.scss';
 import { withLocale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { buildLocaleMetadata } from '@/i18n/metadata';
@@ -37,13 +38,22 @@ const {
   aboutHighlights,
   aboutHighlight,
   aboutCta,
-  contentSection,
-  contentGrid,
-  card,
-  cardLink,
-  cardTitle,
-  cardDesc,
 } = styles;
+
+const {
+  workShowcase,
+  workShowcaseHeader,
+  workShowcaseIntro,
+  workShowcaseGrid,
+  workPanel,
+  workPanelHeader,
+  workPanelIndex,
+  workPanelIconWrap,
+  workPanelIcon,
+  workPanelTitle,
+  workPanelDesc,
+  workPanelMeta,
+} = homeStyles;
 
 export async function generateMetadata({
   params,
@@ -91,6 +101,36 @@ export default async function HomePage({
   const heroImageUrl =
     home?.heroImage && urlFor(home.heroImage).width(500).height(500).url();
 
+  const workPanels: Array<{
+    href: string;
+    title: string;
+    description: string;
+    icon: string;
+    navLabel: string;
+  }> = [
+    {
+      href: withLocale(locale, '/journalism'),
+      title: dictionary.home.journalismCardTitle,
+      description: journalismExcerpt,
+      icon: '/icons/journalism.svg',
+      navLabel: dictionary.nav.journalism,
+    },
+    {
+      href: withLocale(locale, '/research'),
+      title: dictionary.home.researchCardTitle,
+      description: researchExcerpt,
+      icon: '/icons/research.svg',
+      navLabel: dictionary.nav.research,
+    },
+    {
+      href: withLocale(locale, '/multimedia'),
+      title: dictionary.home.multimediaCardTitle,
+      description: multimediaExcerpt,
+      icon: '/icons/multimedia.svg',
+      navLabel: dictionary.nav.multimedia,
+    },
+  ];
+
   return (
     <main className={clsx(main)}>
       <section className={clsx(hero)} aria-labelledby="hero-headline">
@@ -133,8 +173,13 @@ export default async function HomePage({
         <h2 className={clsx(sectionTitle)} id="about-title">
           {dictionary.home.aboutHeading}
         </h2>
-        <p className={clsx(aboutBody, sectionBody, aboutLead)}>{aboutExcerpt}</p>
-        <ul className={clsx(aboutHighlights)} aria-label={dictionary.home.aboutHeading}>
+        <p className={clsx(aboutBody, sectionBody, aboutLead)}>
+          {aboutExcerpt}
+        </p>
+        <ul
+          className={clsx(aboutHighlights)}
+          aria-label={dictionary.home.aboutHeading}
+        >
           {aboutHighlightItems.map((item) => (
             <li key={item} className={clsx(aboutHighlight, sectionBody)}>
               {item}
@@ -148,40 +193,35 @@ export default async function HomePage({
 
       <section
         id="sections"
-        className={clsx(contentSection)}
+        className={clsx(sectionCard, workShowcase)}
         aria-labelledby="sections-title"
       >
-        <h2 className={clsx(sectionTitle)} id="sections-title">
-          {dictionary.common.work}
-        </h2>
-        <div className={clsx(contentGrid)}>
-          <Link
-            href={withLocale(locale, '/journalism')}
-            className={clsx(card, cardLink)}
-          >
-            <h3 className={clsx(cardTitle)}>
-              {dictionary.home.journalismCardTitle}
-            </h3>
-            <p className={clsx(cardDesc)}>{journalismExcerpt}</p>
-          </Link>
-          <Link
-            href={withLocale(locale, '/research')}
-            className={clsx(card, cardLink)}
-          >
-            <h3 className={clsx(cardTitle)}>
-              {dictionary.home.researchCardTitle}
-            </h3>
-            <p className={clsx(cardDesc)}>{researchExcerpt}</p>
-          </Link>
-          <Link
-            href={withLocale(locale, '/multimedia')}
-            className={clsx(card, cardLink)}
-          >
-            <h3 className={clsx(cardTitle)}>
-              {dictionary.home.multimediaCardTitle}
-            </h3>
-            <p className={clsx(cardDesc)}>{multimediaExcerpt}</p>
-          </Link>
+        <div className={workShowcaseHeader}>
+          <h2 className={clsx(sectionTitle)} id="sections-title">
+            {dictionary.common.work}
+          </h2>
+          {/* <p className={clsx(sectionBody, workShowcaseIntro)}>{heroSublineText}</p> */}
+        </div>
+        <div className={workShowcaseGrid}>
+          {workPanels.map((panel, index) => (
+            <Link key={panel.href} href={panel.href} className={workPanel}>
+              <div className={workPanelHeader}>
+                <span className={workPanelIndex}>{`0${index + 1}`}</span>
+                <span className={workPanelIconWrap} aria-hidden>
+                  <Image
+                    src={panel.icon}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className={workPanelIcon}
+                  />
+                </span>
+              </div>
+              <h3 className={workPanelTitle}>{panel.title}</h3>
+              <p className={workPanelDesc}>{panel.description}</p>
+              <span className={workPanelMeta}>{panel.navLabel}</span>
+            </Link>
+          ))}
         </div>
       </section>
 

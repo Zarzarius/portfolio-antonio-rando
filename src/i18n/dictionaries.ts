@@ -42,6 +42,12 @@ export type SiteDictionary = {
   journalism: {
     title: string;
     description: string;
+    categories: {
+      opinion: string;
+      analysis: string;
+      reportage: string;
+      interview: string;
+    };
   };
   research: {
     title: string;
@@ -110,6 +116,12 @@ const dictionaries: Record<Locale, SiteDictionary> = {
     journalism: {
       title: 'Journalism & Analysis',
       description: 'Opinion pieces, analysis, and reportage by Antonio Rando.',
+      categories: {
+        opinion: 'Opinion',
+        analysis: 'Analysis',
+        reportage: 'Reportage',
+        interview: 'Interview',
+      },
     },
     research: {
       title: 'Academic Research',
@@ -179,6 +191,12 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       title: 'Journalismus und Analyse',
       description:
         'Meinungsbeitrage, Analysen und Reportagen von Antonio Rando.',
+      categories: {
+        opinion: 'Meinung',
+        analysis: 'Analyse',
+        reportage: 'Reportage',
+        interview: 'Interview',
+      },
     },
     research: {
       title: 'Akademische Forschung',
@@ -248,6 +266,12 @@ const dictionaries: Record<Locale, SiteDictionary> = {
       title: 'Periodismo y analisis',
       description:
         'Articulos de opinion, analisis y reportajes de Antonio Rando.',
+      categories: {
+        opinion: 'Opinion',
+        analysis: 'Analisis',
+        reportage: 'Reportaje',
+        interview: 'Entrevista',
+      },
     },
     research: {
       title: 'Investigacion academica',

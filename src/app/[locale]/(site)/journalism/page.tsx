@@ -45,6 +45,23 @@ export default async function JournalismPage({
 
   const title = page?.title ?? dictionary.journalism.title;
   const body = page?.body;
+  const localizeCategory = (category: string | null): string | undefined => {
+    const normalizedCategory = category?.trim().toLowerCase();
+
+    if (!normalizedCategory) {
+      return undefined;
+    }
+
+    switch (normalizedCategory) {
+      case 'opinion':
+      case 'analysis':
+      case 'reportage':
+      case 'interview':
+        return dictionary.journalism.categories[normalizedCategory];
+      default:
+        return category ?? undefined;
+    }
+  };
 
   return (
     <main className={clsx(main)}>
@@ -59,7 +76,7 @@ export default async function JournalismPage({
               <ListingCard
                 key={article._id}
                 title={article.title ?? dictionary.common.untitled}
-                meta={article.category ?? undefined}
+                meta={localizeCategory(article.category)}
                 description={article.excerpt ?? undefined}
                 href={article.externalUrl ?? undefined}
               />

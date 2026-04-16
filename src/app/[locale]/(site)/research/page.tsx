@@ -9,6 +9,9 @@ import { getResearchPage, getResearchPapers } from '@/sanity/queries';
 const { main, sectionTitle, sectionBody, contentSection, contentGrid, cmsBodyText } =
   styles;
 
+// Refresh this page periodically so newly published CMS entries appear automatically.
+export const revalidate = 300;
+
 export async function generateMetadata({
   params,
 }: {

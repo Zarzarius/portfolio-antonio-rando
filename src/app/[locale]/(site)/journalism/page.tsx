@@ -52,13 +52,14 @@ export default async function JournalismPage({
         {body ? <p className={clsx(sectionBody, cmsBodyText)}>{body}</p> : null}
         {articles.length > 0 && (
           <div className={clsx(contentGrid)}>
-            {articles.map((article) => (
+            {articles.map((article, index) => (
               <ListingCard
                 key={article._id}
                 title={article.title ?? dictionary.common.untitled}
                 meta={article.category ?? undefined}
                 description={article.excerpt ?? undefined}
                 href={article.externalUrl ?? undefined}
+                animationDelayMs={120 + index * 80}
               />
             ))}
           </div>

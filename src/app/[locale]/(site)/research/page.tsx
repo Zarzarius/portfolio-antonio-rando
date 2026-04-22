@@ -52,13 +52,14 @@ export default async function ResearchPage({
         {body ? <p className={clsx(sectionBody, cmsBodyText)}>{body}</p> : null}
         {papers.length > 0 && (
           <div className={clsx(contentGrid)}>
-            {papers.map((paper) => (
+            {papers.map((paper, index) => (
               <ListingCard
                 key={paper._id}
                 title={paper.title ?? dictionary.common.untitled}
                 meta={paper.journal ?? undefined}
                 description={paper.abstract ?? undefined}
                 href={paper.url ?? undefined}
+                animationDelayMs={120 + index * 80}
               />
             ))}
           </div>

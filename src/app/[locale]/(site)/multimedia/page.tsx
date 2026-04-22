@@ -52,7 +52,7 @@ export default async function MultimediaPage({
         {body ? <p className={clsx(sectionBody, cmsBodyText)}>{body}</p> : null}
         {episodes.length > 0 && (
           <div className={clsx(contentGrid)}>
-            {episodes.map((episode) => (
+            {episodes.map((episode, index) => (
               <ListingCard
                 key={episode._id}
                 title={episode.title ?? dictionary.common.untitled}
@@ -63,6 +63,7 @@ export default async function MultimediaPage({
                 }
                 description={episode.description ?? undefined}
                 href={episode.audioUrl ?? undefined}
+                animationDelayMs={120 + index * 80}
               />
             ))}
           </div>

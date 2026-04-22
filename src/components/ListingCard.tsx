@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import type { CSSProperties } from 'react';
 import styles from '@/components/layout.module.scss';
 
 const { listingCard, listingCardLink, cardTitle, cardDesc, cardMeta } = styles;
@@ -8,9 +9,21 @@ export type ListingCardProps = {
   meta?: string;
   description?: string;
   href?: string;
+  animationDelayMs?: number;
 };
 
-export function ListingCard({ title, meta, description, href }: ListingCardProps) {
+export function ListingCard({
+  title,
+  meta,
+  description,
+  href,
+  animationDelayMs,
+}: ListingCardProps) {
+  const animatedStyle =
+    animationDelayMs != null
+      ? ({ '--card-enter-delay': `${animationDelayMs}ms` } as CSSProperties)
+      : undefined;
+
   const content = (
     <>
       <h2 className={clsx(cardTitle)}>{title}</h2>
@@ -27,6 +40,7 @@ export function ListingCard({ title, meta, description, href }: ListingCardProps
     return (
       <a
         className={clsx(listingCard, listingCardLink)}
+        style={animatedStyle}
         href={href}
         target="_blank"
         rel="noopener noreferrer"
@@ -36,5 +50,9 @@ export function ListingCard({ title, meta, description, href }: ListingCardProps
     );
   }
 
-  return <article className={clsx(listingCard)}>{content}</article>;
+  return (
+    <article className={clsx(listingCard)} style={animatedStyle}>
+      {content}
+    </article>
+  );
 }

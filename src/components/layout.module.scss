@@ -573,30 +573,7 @@
   opacity: 0;
   transform: translate3d(0, 16px, 0);
   animation: cardReveal 680ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-.contentGrid > *:nth-child(1) {
-  animation-delay: 120ms;
-}
-
-.contentGrid > *:nth-child(2) {
-  animation-delay: 200ms;
-}
-
-.contentGrid > *:nth-child(3) {
-  animation-delay: 280ms;
-}
-
-.contentGrid > *:nth-child(4) {
-  animation-delay: 360ms;
-}
-
-.contentGrid > *:nth-child(5) {
-  animation-delay: 440ms;
-}
-
-.contentGrid > *:nth-child(6) {
-  animation-delay: 520ms;
+  animation-delay: var(--card-enter-delay, 120ms);
 }
 
 @media (max-width: 900px) {

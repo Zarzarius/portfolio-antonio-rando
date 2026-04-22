@@ -43,7 +43,6 @@ const {
 const {
   workShowcase,
   workShowcaseHeader,
-  workShowcaseIntro,
   workShowcaseGrid,
   workPanel,
   workPanelHeader,
